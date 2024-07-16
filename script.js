@@ -18,7 +18,7 @@ antivirusButton.addEventListener('click', function() {
       videoContainer.style.display = 'block';
 
       // Incorporate the YouTube video (replace with your video link)
-      const videoURL = 'https://www.youtube.com/watch?v=xvFZjo5PgG0';
+      const videoURL = 'https://www.youtube.com/watch?v=VIDEO_ID';
       const videoHTML = `<iframe width="100%" height="300%" src="${videoURL}" title="Malware Protector - Rimozione Virus" frameborder="0" allow="accelerometer; autoplay; clipboard-write; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
       videoContainer.innerHTML = videoHTML;
     }
