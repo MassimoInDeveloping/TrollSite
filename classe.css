@@ -42,18 +42,24 @@ h1 {
 }
 
 #antivirus-button {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background-color: red;
-    color: #fff;
-    border: none;
-    cursor: pointer;
+  display: flex; /* Enable flexbox layout */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  background-color: #007bff; /* Button background color */
+  color: #fff; /* Button text color */
+  padding: 10px 20px; /* Button padding */
+  border: none; /* Remove default button border */
+  cursor: pointer; /* Indicate clickable cursor */
+  margin-top: 20px; /* Add margin above the button */
 }
 
-#video-container {
-    width: 100%;
-    height: 300px; /* Regolare l'altezza in base al video */
-    margin-top: 20px;
-    display: none; /* Nascondere il video inizialmente */
+.video-container {
+  /* Style the video container to position it within the button */
+  position: relative; /* Enable relative positioning */
+  top: 50%; /* Position vertically from the top */
+  transform: translateY(-50%); /* Adjust vertical position with transform */
+  left: 0; /* Position horizontally at the left */
+  width: 200px; /* Adjust video width as needed */
+  height: 100px; /* Adjust video height as needed */
 }
+
