@@ -1,26 +1,21 @@
 const antivirusButton = document.getElementById('antivirus-button');
-const videoContainer = document.getElementById('video-container');
-const progressBar = document.querySelector('.progress-bar'); // Select the progress bar element
+const progressBar = document.querySelector('.progress-bar');
+const resultText = document.getElementById('result');
+
+let progress = 0;
+let intervalId;
 
 antivirusButton.addEventListener('click', function() {
-  // Nascondere il pulsante antivirus (Hide antivirus button)
-  antivirusButton.style.display = 'none';
-
-  // Simulate progress bar animation
-  let progress = 0;
-  const intervalId = setInterval(() => {
-    progress += 5; // Increase progress by 5% each interval
+  // Simulazione progresso barra di caricamento
+  intervalId = setInterval(() => {
+    progress += 5; // Aumentare il progresso del 5% ogni intervallo
     progressBar.style.width = `${progress}%`;
 
     if (progress === 100) {
-      clearInterval(intervalId); // Stop animation when progress reaches 100%
-      // Show video container
-      videoContainer.style.display = 'block';
-
-      // Incorporate the YouTube video (replace with your video link)
-      const videoURL = 'https://www.youtube.com/watch?v=VIDEO_ID';
-      const videoHTML = `<iframe width="100%" height="300%" src="${videoURL}" title="Malware Protector - Rimozione Virus" frameborder="0" allow="accelerometer; autoplay; clipboard-write; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-      videoContainer.innerHTML = videoHTML;
+      clearInterval(intervalId); // Interrompere l'animazione quando il progresso raggiunge il 100%
+      resultText.textContent = 'Computer Pericoloso al 100%!'; // Aggiorna il testo del risultato
+      antivirusButton.textContent = 'Correggi Subito'; // Modifica il testo del pulsante
+      antivirusButton.removeAttribute('disabled'); // Abilita il pulsante
     }
-  }, 100); // Update progress bar every 100 milliseconds (adjust for speed)
+  }, 100); // Aggiorna la barra di caricamento ogni 100 millisecondi (regolare per la velocità)
 });
