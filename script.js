@@ -1,26 +1,32 @@
 const antivirusButton = document.getElementById('antivirus-button');
-const videoContainer = document.getElementById('video-container');
-const progressBar = document.querySelector('.progress-bar'); // Select the progress bar element
+const progressBar = document.querySelector('.progress-bar');
+const resultText = document.getElementById('result');
+const videoContainer = document.querySelector('.video-container'); // Get the video container
+const videoElement = document.createElement('iframe'); // Create an iframe element
 
-antivirusButton.addEventListener('click', function() {
-  // Nascondere il pulsante antivirus (Hide antivirus button)
-  antivirusButton.style.display = 'none';
+let progress = 0;
+let intervalId;
 
-  // Simulate progress bar animation
-  let progress = 0;
-  const intervalId = setInterval(() => {
-    progress += 5; // Increase progress by 5% each interval
+document.getElementById('attiva-antivirus-button').addEventListener('click', function() {
+  // Simulazione progresso barra di caricamento
+  intervalId = setInterval(() => {
+    progress += 5; // Aumentare il progresso del 5% ogni intervallo
     progressBar.style.width = `${progress}%`;
 
     if (progress === 100) {
-      clearInterval(intervalId); // Stop animation when progress reaches 100%
-      // Show video container
-      videoContainer.style.display = 'block';
+      clearInterval(intervalId); // Interrompere l'animazione quando il progresso raggiunge il 100%
+      resultText.textContent = 'Computer Pericoloso al 100%!'; // Aggiorna il testo del risultato
+      antivirusButton.textContent = 'Correggi Subito'; // Modifica il testo del pulsante
+      antivirusButton.removeAttribute('hidden'); // Mostra il pulsante "Correggi Subito"
+      antivirusButton.removeAttribute('disabled'); // Abilita il pulsante
 
-      // Incorporate the YouTube video (replace with your video link)
-      const videoURL = 'https://www.youtube.com/watch?v=xvFZjo5PgG0';
-      const videoHTML = `<iframe width="100%" height="300%" src="${videoURL}" title="Malware Protector - Rimozione Virus" frameborder="0" allow="accelerometer; autoplay; clipboard-write; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-      videoContainer.innerHTML = videoHTML;
+      // Incorpora il video YouTube usando il codice di incorporamento
+      const embedCode = '<iframe width="882" height="496" src="https://www.youtube.com/embed/xvFZjo5PgG0" title="Rick Roll (Different link + no ads)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>'; // Sostituisci con il tuo codice di incorporamento YouTube
+      videoElement.src = embedCode;
+      videoElement.width = 200; // Regola la larghezza del video
+      videoElement.height = 150; // Regola l'altezza del video
+      videoElement.allowfullscreen = true; // Abilita fullscreen
+      videoContainer.appendChild(videoElement); // Aggiungi l'iframe al container
     }
-  }, 100); // Update progress bar every 100 milliseconds (adjust for speed)
+  }, 100); // Aggiorna la barra di caricamento ogni 100 millisecondi (regolare per la velocità)
 });
